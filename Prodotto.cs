@@ -14,28 +14,58 @@ namespace csharp_oop_shop
         public double Prezzo { get; set; }
         public int Iva { get; set; }
 
-        public Prodotto(int codice, string nome, string descrizione, double prezzo, int iva)
+        public Prodotto(string nome, string descrizione, double prezzo, int iva)
         {
-            this.Codice = codice;
+            Random r = new Random();
+
+            this.Codice = r.Next(1, 99999999);
             this.Nome = nome;
             this.Descrizione = descrizione;
             this.Prezzo = prezzo;
             this.Iva = iva;
         }
 
-        public void BasePrice()
+        public void CodiceProdotto()
         {
-            Console.WriteLine("Il prezzo base è di: " + this.Prezzo + "€");
-        } 
-
-        public double PriceIva()
-        {
-            return (Prezzo*22)/100 + Prezzo;
+            Console.WriteLine("Il codice del prodotto è: " + this.Codice);
         }
 
-        public string ExtendedName()
+        public void BasePrice()
         {
-            return this.Codice + this.Nome;
+            Console.WriteLine("Il prezzo base è: " + this.Prezzo);
+        } 
+
+        public void PriceIva()
+        {
+            double priceIva = (this.Prezzo * this.Iva)/ 100 + this.Prezzo;
+            Console.WriteLine("Il prezzo comprensivo di IVA è: " + priceIva);
+        }
+
+        public void ExtendedName()
+        {
+            Console.WriteLine("Il nome esteso del prodotto è: " + (this.Codice + this.Nome));
+        }
+
+        public string NewCode()
+        {
+            string codeToString = this.Codice.ToString();
+            string newCode = "";
+
+            for(int i = 0; i < 8 - codeToString.Length; i++)
+            {
+                if (this.Codice < 10000000)
+                {
+                    newCode = "0" + codeToString;
+                    return newCode;
+                }
+                else
+                {
+                    newCode = codeToString;
+                    return newCode;
+                }
+            }
+
+            return newCode;
         }
     }
 }
