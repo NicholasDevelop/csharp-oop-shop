@@ -22,5 +22,20 @@ namespace csharp_oop_shop
             this.Prezzo = prezzo;
             this.Iva = iva;
         }
+
+        public void BasePrice()
+        {
+            Console.WriteLine("Il prezzo base è di: " + this.Prezzo + "€");
+        } 
+
+        public double PriceIva()
+        {
+            return (Prezzo*22)/100 + Prezzo;
+        }
+
+        public string ExtendedName()
+        {
+            return this.Codice + this.Nome;
+        }
     }
 }
