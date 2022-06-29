@@ -46,26 +46,20 @@ namespace csharp_oop_shop
             Console.WriteLine("Il nome esteso del prodotto è: " + (this.Codice + this.Nome));
         }
 
-        public string NewCode()
+        public void NewCode()
         {
             string codeToString = this.Codice.ToString();
-            string newCode = "";
+            string newCode = codeToString;
 
             for(int i = 0; i < 8 - codeToString.Length; i++)
             {
                 if (this.Codice < 10000000)
                 {
                     newCode = "0" + codeToString;
-                    return newCode;
-                }
-                else
-                {
-                    newCode = codeToString;
-                    return newCode;
                 }
             }
 
-            return newCode;
+            Console.WriteLine("Il codice esteso è: " + newCode);
         }
     }
 }
